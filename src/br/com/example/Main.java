@@ -1,9 +1,10 @@
 package br.com.example;
 
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import br.com.example.utilitarios.Menus;
-
+import br.com.example.utilitarios.Saida;
 import br.com.example.servicos.ClinicaServico;
 
 public class Main {
@@ -15,7 +16,14 @@ public class Main {
     public static void main(String[] args) {
         for(int op = -1; op != 0;) {
             System.out.print(MENUS.get("main"));
-            op = Integer.parseInt(sc.nextLine());
+
+            try {
+                op = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                op = -1;
+            } catch (NoSuchElementException e) {
+                break;
+            }
 
             switch (op) {
                 case 1: menuPacientes(); break;
@@ -30,7 +38,8 @@ public class Main {
         }
 
         sc.close();
-        System.out.println("Sistema encerrado.");
+        Saida.limparTerminal();
+        System.out.println(Saida.amarelo("\n\n======================================= OPERAÇÃO ENCERRADA =======================================\n"));
     }
 
     public static void menuPacientes() {

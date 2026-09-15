@@ -33,6 +33,6 @@ public final class Saida {
     // CURSOR E LIMPEZA
 
     public static void limparTerminal() {
-        System.out.print("\001B[2J\001B[3J\001B[H");
+        System.out.print("\u001B[2J\u001B[3J\u001B[H");
     }
 }
