@@ -1,3 +1,4 @@
+package br.com.example.entidades;
 public class Paciente {
     public String nome;
     public String cpf;

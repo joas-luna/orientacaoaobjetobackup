@@ -1,4 +1,9 @@
-public class Pagamento {
+package br.com.example.servicos;
+
+import br.com.example.interfaces.Exportavel;
+
+
+public class Pagamento implements Exportavel {
     public int indiceConsulta;
     public double valorFinal;
     public String tipoPagamento;
@@ -54,5 +59,10 @@ public class Pagamento {
             resumo = resumo + " (R$" + valorParcela + " cada)";
         }
         return resumo;
+    }
+
+    @Override 
+    public String exportarDados() {
+        return "";
     }
 }

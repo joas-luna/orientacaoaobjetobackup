@@ -1,80 +1,36 @@
+package br.com.example.servicos;
+
 import java.util.Scanner;
 
-public class Main {
-    static Paciente[] pacientes = new Paciente[100];
-    static int totalPacientes = 0;
+import br.com.example.Main;
+import br.com.example.entidades.Paciente;
+import br.com.example.entidades.abstratos.Profissional;
 
-    static Profissional[] profissionais = new Profissional[50];
-    static int totalProfissionais = 0;
+public final class ClinicaServico {
 
-    static Consulta[] consultas = new Consulta[200];
-    static int totalConsultas = 0;
+    private static Scanner sc = Main.sc;
 
-    static Atendimento[] atendimentos = new Atendimento[200];
-    static int totalAtendimentos = 0;
+    private static Paciente[] pacientes = new Paciente[100];
+    private static int totalPacientes = 0;
 
-    static Pagamento[] pagamentos = new Pagamento[200];
-    static int totalPagamentos = 0;
+    private static Profissional[] profissionais = new Profissional[50];
+    private static int totalProfissionais = 0;
 
-    static double[] multas = new double[100];
-    static int totalMultas = 0;
+    private static Consulta[] consultas = new Consulta[200];
+    private static int totalConsultas = 0;
 
-    static Scanner sc = new Scanner(System.in);
+    private static Atendimento[] atendimentos = new Atendimento[200];
+    private static int totalAtendimentos = 0;
 
-    public static void main(String[] args) {
-        int opcao = -1;
-        while (opcao != 0) {
-            System.out.println("\n=== CLINICA VIDAPLENA ===");
-            System.out.println("1 - Pacientes");
-            System.out.println("2 - Profissionais");
-            System.out.println("3 - Consultas");
-            System.out.println("4 - Atendimentos");
-            System.out.println("5 - Pagamentos");
-            System.out.println("6 - Relatorios");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha: ");
-            opcao = Integer.parseInt(sc.nextLine());
+    private static Pagamento[] pagamentos = new Pagamento[200];
+    private static int totalPagamentos = 0;
 
-            switch (opcao) {
-                case 1: menuPacientes(); break;
-                case 2: menuProfissionais(); break;
-                case 3: menuConsultas(); break;
-                case 4: menuAtendimentos(); break;
-                case 5: menuPagamentos(); break;
-                case 6: menuRelatorios(); break;
-                case 0: break;
-                default: System.out.println("Opcao invalida!"); break;
-            }
-        }
-        System.out.println("Sistema encerrado.");
-    }
+    private static double[] multas = new double[100];
+    private static int totalMultas = 0;   
 
+    private ClinicaServico() {}
+    
     // ---- PACIENTES ----
-
-    public static void menuPacientes() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- PACIENTES ---");
-            System.out.println("1 - Cadastrar");
-            System.out.println("2 - Complementar cadastro");
-            System.out.println("3 - Buscar por CPF");
-            System.out.println("4 - Listar todos");
-            System.out.println("5 - Desativar");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
-            op = Integer.parseInt(sc.nextLine());
-
-            switch (op) {
-                case 1: cadastrarPaciente(); break;
-                case 2: complementarPaciente(); break;
-                case 3: buscarPaciente(); break;
-                case 4: listarPacientes(); break;
-                case 5: desativarPaciente(); break;
-                case 0: break;
-                default: System.out.println("Opcao invalida!"); break;
-            }
-        }
-    }
 
     public static void cadastrarPaciente() {
         System.out.print("Nome: ");
@@ -180,30 +136,7 @@ public class Main {
     }
 
     // ---- PROFISSIONAIS ----
-
-    public static void menuProfissionais() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- PROFISSIONAIS ---");
-            System.out.println("1 - Cadastrar");
-            System.out.println("2 - Atualizar cadastro");
-            System.out.println("3 - Listar todos");
-            System.out.println("4 - Filtrar por especialidade");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
-            op = Integer.parseInt(sc.nextLine());
-
-            switch (op) {
-                case 1: cadastrarProfissional(); break;
-                case 2: atualizarProfissional(); break;
-                case 3: listarProfissionais(); break;
-                case 4: filtrarProfissionais(); break;
-                case 0: break;
-                default: System.out.println("Opcao invalida!"); break;
-            }
-        }
-    }
-
+    
     public static void cadastrarProfissional() {
         System.out.print("Nome: ");
         String nome = sc.nextLine();
@@ -307,33 +240,6 @@ public class Main {
     }
 
     // ---- CONSULTAS ----
-
-    public static void menuConsultas() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- CONSULTAS ---");
-            System.out.println("1 - Agendar (escolher profissional)");
-            System.out.println("2 - Agendar (busca por especialidade)");
-            System.out.println("3 - Cancelar");
-            System.out.println("4 - Remarcar");
-            System.out.println("5 - Listar todas");
-            System.out.println("6 - Buscar por CPF");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
-            op = Integer.parseInt(sc.nextLine());
-
-            switch (op) {
-                case 1: agendarComProfissional(); break;
-                case 2: agendarPorEspecialidade(); break;
-                case 3: cancelarConsulta(); break;
-                case 4: remarcarConsulta(); break;
-                case 5: listarConsultas(); break;
-                case 6: buscarConsultasPorPaciente(); break;
-                case 0: break;
-                default: System.out.println("Opcao invalida!"); break;
-            }
-        }
-    }
 
     public static void agendarComProfissional() {
         System.out.print("CPF do paciente: ");
@@ -650,19 +556,6 @@ public class Main {
 
     // ---- ATENDIMENTOS ----
 
-    public static void menuAtendimentos() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- ATENDIMENTOS ---");
-            System.out.println("1 - Registrar atendimento");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
-            op = Integer.parseInt(sc.nextLine());
-
-            if (op == 1) registrarAtendimento();
-        }
-    }
-
     public static void registrarAtendimento() {
         System.out.print("Indice da consulta: ");
         int idxConsulta = Integer.parseInt(sc.nextLine());
@@ -730,27 +623,6 @@ public class Main {
     }
 
     // ---- PAGAMENTOS ----
-
-    public static void menuPagamentos() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- PAGAMENTOS ---");
-            System.out.println("1 - Pagamento direto");
-            System.out.println("2 - Pagamento automatico");
-            System.out.println("3 - Listar pagamentos");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
-            op = Integer.parseInt(sc.nextLine());
-
-            switch (op) {
-                case 1: pagamentoDireto(); break;
-                case 2: pagamentoAutomatico(); break;
-                case 3: listarPagamentos(); break;
-                case 0: break;
-                default: System.out.println("Opcao invalida!"); break;
-            }
-        }
-    }
 
     public static void pagamentoDireto() {
         System.out.print("Indice da consulta: ");
@@ -858,42 +730,20 @@ public class Main {
         }
     }
 
-    // ---- RELATORIOS ----
-
-    public static void menuRelatorios() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- RELATORIOS ---");
-            System.out.println("1 - Geral");
-            System.out.println("2 - Por profissional");
-            System.out.println("3 - Por periodo");
-            System.out.println("4 - Resumo financeiro");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
-            op = Integer.parseInt(sc.nextLine());
-
-            switch (op) {
-                case 1:
-                    Relatorio.gerarRelatorio(consultas, totalConsultas, atendimentos, totalAtendimentos);
-                    break;
-                case 2:
-                    System.out.print("Nome do profissional: ");
-                    String nome = sc.nextLine();
-                    Relatorio.gerarRelatorio(consultas, totalConsultas, atendimentos, totalAtendimentos, nome);
-                    break;
-                case 3:
-                    System.out.print("Data inicio (DD/MM/AAAA): ");
-                    String ini = sc.nextLine();
-                    System.out.print("Data fim (DD/MM/AAAA): ");
-                    String fim = sc.nextLine();
-                    Relatorio.gerarRelatorio(consultas, totalConsultas, atendimentos, totalAtendimentos, ini, fim);
-                    break;
-                case 4:
-                    Relatorio.gerarResumoFinanceiro(consultas, totalConsultas, pagamentos, totalPagamentos, multas, totalMultas);
-                    break;
-                case 0: break;
-                default: System.out.println("Opcao invalida!"); break;
-            }
+    public static void gerarRelatorio(boolean op) {
+        if(op) {
+            Relatorio.gerarRelatorio(consultas, totalConsultas, atendimentos, totalAtendimentos);
+            return;
         }
+
+        Relatorio.gerarResumoFinanceiro(consultas, totalConsultas, pagamentos, totalPagamentos, multas, totalMultas);
+    }
+
+    public static void gerarRelatorio(String nome) {
+        Relatorio.gerarRelatorio(consultas, totalConsultas, atendimentos, totalAtendimentos, nome);
+    }
+
+    public static void gerarRelatorio(String inicio, String fim) {
+        Relatorio.gerarRelatorio(consultas, totalConsultas, atendimentos, totalAtendimentos, inicio, fim);
     }
 }

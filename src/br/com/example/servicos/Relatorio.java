@@ -1,3 +1,5 @@
+package br.com.example.servicos;
+
 public class Relatorio {
 
     // mostra todas as consultas

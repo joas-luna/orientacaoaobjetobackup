@@ -1,3 +1,4 @@
+package br.com.example.entidades.abstratos;
 public class Profissional {
     public String nome;
     public String especialidade;

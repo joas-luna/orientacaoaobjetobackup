@@ -1,3 +1,4 @@
+package br.com.example.servicos;
 public class Consulta {
     public String cpfPaciente;
     public String nomeProfissional;

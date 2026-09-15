@@ -1,4 +1,9 @@
-public class Atendimento {
+package br.com.example.servicos;
+
+import br.com.example.interfaces.Exportavel;
+
+
+public class Atendimento implements Exportavel {
     public int indiceConsulta;
     public String observacoes;
     public String diagnostico;
@@ -70,5 +75,10 @@ public class Atendimento {
             }
         }
         return resumo;
+    }
+
+    @Override 
+    public String exportarDados() {
+        return "";
     }
 }
