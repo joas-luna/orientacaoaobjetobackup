@@ -1,29 +1,101 @@
 package br.com.example;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import br.com.example.servicos.ClinicaServico;
 
 
+final class Menus {
+
+    private Menus() {}
+
+    public static final HashMap<String, String> MENUS = new HashMap<>(
+        Map.of(
+        "main", """
+                === CLÍNICA VIDAPLENA ===
+                1 - Pacientes
+                2 - Profissionais
+                3 - Consultas
+                4 - Atendimentos
+                5 - Pagamentos
+                6 - Relatórios
+                0 - Sair
+                
+                Escolher: """,
+        "pacientes", """
+                --- PACIENTES ---
+                1 - Cadastrar
+                2 - Complementar cadastro
+                3 - Buscar por CPF
+                4 - Listar todos
+                5 - Desativar
+                0 - Voltar
+                
+                Escolher: """,
+        "profissionais", """
+                --- PROFISSIONAIS ---
+                1 - Cadastrar
+                2 - Atualizar cadastro
+                3 - Listar todos
+                4 - Filtrar por especialidade
+                0 - Voltar
+                
+                Escolher: """,
+        "consultas", """
+                --- CONSULTAS ---
+                1 - Agendar (escolher profissional)
+                2 - Agendar (busca por especialidade)
+                3 - Cancelar
+                4 - Remarcar
+                5 - Listar todas
+                6 - Buscar por CPF
+                0 - Voltar
+                
+                Escolher: """,
+        "atendimentos", """
+                --- ATENDIMENTOS ---
+                1 - Registrar
+                2 - Listar todos
+                3 - Buscar por CPF
+                0 - Voltar
+                
+                Escolher: """,
+        "pagamentos", """
+                --- PAGAMENTOS ---
+                1 - Registrar pagamento
+                2 - Listar todos
+                3 - Buscar por CPF
+                0 - Voltar
+                
+                Escolher: """,
+        "relatorios", """
+                --- RELATÓRIOS ---
+                1 - Gerar relatório de pacientes
+                2 - Gerar relatório de profissionais
+                3 - Gerar relatório de consultas
+                4 - Gerar relatório de atendimentos
+                5 - Gerar relatório de pagamentos
+                0 - Voltar
+                
+                Escolher: """
+        )
+    );
+}
+
 public class Main {
+
+    public static final HashMap<String, String> MENUS = Menus.MENUS;
 
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int opcao = -1;
-        while (opcao != 0) {
-            System.out.println("=== CLÍNICA VIDAPLENA ===");
-            System.out.println("1 - Pacientes");
-            System.out.println("2 - Profissionais");
-            System.out.println("3 - Consultas");
-            System.out.println("4 - Atendimentos");
-            System.out.println("5 - Pagamentos");
-            System.out.println("6 - Relatórios");
-            System.out.println("0 - Sair");
-            System.out.print("Escolher: ");
-            opcao = Integer.parseInt(sc.nextLine());
+        for(int op = -1; op != 0;) {
+            System.out.print(MENUS.get("main"));
+            op = Integer.parseInt(sc.nextLine());
 
-            switch (opcao) {
+            switch (op) {
                 case 1: menuPacientes(); break;
                 case 2: menuProfissionais(); break;
                 case 3: menuConsultas(); break;
@@ -40,16 +112,8 @@ public class Main {
     }
 
     public static void menuPacientes() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- PACIENTES ---");
-            System.out.println("1 - Cadastrar");
-            System.out.println("2 - Complementar cadastro");
-            System.out.println("3 - Buscar por CPF");
-            System.out.println("4 - Listar todos");
-            System.out.println("5 - Desativar");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
+        for(int op = -1; op != 0;) {
+            System.out.print(MENUS.get("pacientes"));
             op = Integer.parseInt(sc.nextLine());
 
             switch (op) {
@@ -65,15 +129,8 @@ public class Main {
     }
 
     public static void menuProfissionais() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- PROFISSIONAIS ---");
-            System.out.println("1 - Cadastrar");
-            System.out.println("2 - Atualizar cadastro");
-            System.out.println("3 - Listar todos");
-            System.out.println("4 - Filtrar por especialidade");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
+        for(int op = -1; op != 0;) {
+            System.out.print(MENUS.get("profissionais"));
             op = Integer.parseInt(sc.nextLine());
 
             switch (op) {
@@ -88,17 +145,8 @@ public class Main {
     }
     
     public static void menuConsultas() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- CONSULTAS ---");
-            System.out.println("1 - Agendar (escolher profissional)");
-            System.out.println("2 - Agendar (busca por especialidade)");
-            System.out.println("3 - Cancelar");
-            System.out.println("4 - Remarcar");
-            System.out.println("5 - Listar todas");
-            System.out.println("6 - Buscar por CPF");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
+        for(int op = -1; op != 0;) {
+            System.out.print(MENUS.get("consultas"));
             op = Integer.parseInt(sc.nextLine());
 
             switch (op) {
@@ -115,12 +163,8 @@ public class Main {
     }
 
     public static void menuAtendimentos() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- ATENDIMENTOS ---");
-            System.out.println("1 - Registrar atendimento");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
+        for(int op = -1; op != 0;) {
+            System.out.print(MENUS.get("atendimentos"));
             op = Integer.parseInt(sc.nextLine());
 
             if (op == 1) ClinicaServico.registrarAtendimento();
@@ -128,14 +172,10 @@ public class Main {
     }
 
     public static void menuPagamentos() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- PAGAMENTOS ---");
-            System.out.println("1 - Pagamento direto");
-            System.out.println("2 - Pagamento automatico");
-            System.out.println("3 - Listar pagamentos");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
+        for(int op = -1; op != 0;) {
+            System.out.print(MENUS.get("pagamentos"));
+            op = Integer.parseInt(sc.nextLine());
+
             op = Integer.parseInt(sc.nextLine());
 
             switch (op) {
@@ -149,15 +189,8 @@ public class Main {
     }
 
     public static void menuRelatorios() {
-        int op = -1;
-        while (op != 0) {
-            System.out.println("\n--- RELATORIOS ---");
-            System.out.println("1 - Geral");
-            System.out.println("2 - Por profissional");
-            System.out.println("3 - Por periodo");
-            System.out.println("4 - Resumo financeiro");
-            System.out.println("0 - Voltar");
-            System.out.print("Opcao: ");
+        for(int op = -1; op != 0;) {
+            System.out.print(MENUS.get("relatorios"));
             op = Integer.parseInt(sc.nextLine());
 
             switch (op) {
