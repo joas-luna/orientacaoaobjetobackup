@@ -35,7 +35,8 @@ public final class ClinicaServico {
     public static void cadastrarPaciente() {
         System.out.print("Nome: ");
         String nome = sc.nextLine();
-        System.out.print("CPF: ");
+
+        System.out.print("CPF: "); 
         String cpf = sc.nextLine();
 
         // verifica se ja existe

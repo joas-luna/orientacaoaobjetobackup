@@ -1,5 +1,5 @@
 package br.com.example.utilitarios;
 
-public class Entrada {
+public final class Entrada {
     
 }

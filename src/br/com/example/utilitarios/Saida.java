@@ -30,9 +30,55 @@ public final class Saida {
         return "\u001B[1;36m%s\u001B[m".formatted(str);
     }
 
-    // CURSOR E LIMPEZA
+    // CURSOR 
+    
+    public static void subirLinha() {
+        System.out.print("\u001B[A");
+    }
+    
+    public static void subirLinha(int n) {
+        System.out.print("\u001B[%dA".formatted(n));
+    }
+
+    public static void descerLinha() {
+        System.out.print("\u001B[B");
+    }
+
+    public static void descerLinha(int n) {
+        System.out.print("\u001B[%dB".formatted(n));
+    }
+
+    public static void inicioLinhaSuperior() {
+        System.out.print("\u001B[1F");
+    }
+
+    public static void inicioLinhaSuperior(int n) {
+        System.out.print("\u001B[%dF".formatted(n));
+    }
+
+    public static void inicioLinhaInferior() {
+        System.out.print("\u001B[1E");
+    }
+
+    public static void inicioLinhaInferior(int n) {
+        System.out.print("\u001B[%dE".formatted(n));
+    }
+
+    // LIMPEZA
 
     public static void limparTerminal() {
         System.out.print("\u001B[2J\u001B[3J\u001B[H");
+    }
+
+    public static void limparLinha() {
+        System.out.print("\u001B[2K");
+    }
+
+    public static void limparDireitaLinha() {
+        System.out.print("\u001B[0K");
+    }
+
+    public static void limparEsquerdaLinha() {
+        System.out.print("\u001B[1K");
     }
 }

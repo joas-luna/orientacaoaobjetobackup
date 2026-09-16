@@ -3,6 +3,7 @@ package br.com.example;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
 import br.com.example.utilitarios.Menus;
 import br.com.example.utilitarios.Saida;
 import br.com.example.servicos.ClinicaServico;
@@ -14,16 +15,23 @@ public class Main {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        for(int op = -1; op != 0;) {
-            System.out.print(MENUS.get("main"));
+        String opStr;
 
+        for(int op = -1; op != 0;) {
+            System.out.print(Saida.ciano(MENUS.get("main")));
+            
             try {
-                op = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                op = -1;
+                opStr =sc.nextLine();
             } catch (NoSuchElementException e) {
                 break;
             }
+
+            if(opStr.isEmpty()) {
+                System.out.print(Saida.vermelho("\u001B[s\t\t\tCancelar operação?\u001B[u"));
+                opStr = sc.nextLine();
+            }
+
+            opStr = opStr.replaceAll("\\s", "");
 
             switch (op) {
                 case 1: menuPacientes(); break;
@@ -43,9 +51,23 @@ public class Main {
     }
 
     public static void menuPacientes() {
+        String opStr;
+
         for(int op = -1; op != 0;) {
-            System.out.print(MENUS.get("pacientes"));
-            op = Integer.parseInt(sc.nextLine());
+            System.out.print(Saida.ciano(MENUS.get("pacientes")));
+            
+            try {
+                opStr =sc.nextLine();
+            } catch (NoSuchElementException e) {
+                break;
+            }
+
+            if(opStr.isEmpty()) {
+                System.out.print(Saida.vermelho("\u001B[s\tCancelar operaçã\t\to?\u001B[u"));
+                opStr = sc.nextLine();
+            }
+
+            opStr = opStr.replaceAll("\\s", "");
 
             switch (op) {
                 case 1: ClinicaServico.cadastrarPaciente(); break;
@@ -60,9 +82,23 @@ public class Main {
     }
 
     public static void menuProfissionais() {
+        String opStr;
+
         for(int op = -1; op != 0;) {
-            System.out.print(MENUS.get("profissionais"));
-            op = Integer.parseInt(sc.nextLine());
+            System.out.print(Saida.ciano(MENUS.get("profissionais")));
+            
+            try {
+                opStr =sc.nextLine();
+            } catch (NoSuchElementException e) {
+                break;
+            }
+
+            if(opStr.isEmpty()) {
+                System.out.print(Saida.vermelho("\u001B[s\tCancelar operaçã\t\to?\u001B[u"));
+                opStr = sc.nextLine();
+            }
+
+            opStr = opStr.replaceAll("\\s", "");
 
             switch (op) {
                 case 1: ClinicaServico.cadastrarProfissional(); break;
@@ -76,9 +112,23 @@ public class Main {
     }
     
     public static void menuConsultas() {
+        String opStr;
+
         for(int op = -1; op != 0;) {
-            System.out.print(MENUS.get("consultas"));
-            op = Integer.parseInt(sc.nextLine());
+            System.out.print(Saida.ciano(MENUS.get("consultas")));
+            
+            try {
+                opStr =sc.nextLine();
+            } catch (NoSuchElementException e) {
+                break;
+            }
+
+            if(opStr.isEmpty()) {
+                System.out.print(Saida.vermelho("\u001B[s\tCancelar operaçã\t\to?\u001B[u"));
+                opStr = sc.nextLine();
+            }
+
+            opStr = opStr.replaceAll("\\s", "");
 
             switch (op) {
                 case 1: ClinicaServico.agendarComProfissional(); break;
@@ -94,20 +144,59 @@ public class Main {
     }
 
     public static void menuAtendimentos() {
+        String opStr;
+
         for(int op = -1; op != 0;) {
-            System.out.print(MENUS.get("atendimentos"));
-            op = Integer.parseInt(sc.nextLine());
+            System.out.print(Saida.ciano(MENUS.get("atendimentos")));
+            
+            try {
+                opStr =sc.nextLine();
+            } catch (NoSuchElementException e) {
+                break;
+            }
+
+            if(opStr.isEmpty()) {
+                System.out.print(Saida.vermelho("\u001B[s\tCancelar operaçã\t\to?\u001B[u"));
+                opStr = sc.nextLine();
+            }
+
+            opStr = opStr.replaceAll("\\s", "");
 
             if (op == 1) ClinicaServico.registrarAtendimento();
         }
     }
 
     public static void menuPagamentos() {
-        for(int op = -1; op != 0;) {
-            System.out.print(MENUS.get("pagamentos"));
-            op = Integer.parseInt(sc.nextLine());
+        String opStr;
 
-            op = Integer.parseInt(sc.nextLine());
+        for(int op = -1; op != 0;) {
+            System.out.print(Saida.ciano(MENUS.get("pagamentos")));
+            
+            try {
+                opStr =sc.nextLine();
+            } catch (NoSuchElementException e) {
+                break;
+            }
+
+            if(opStr.isEmpty()) {
+                System.out.print(Saida.vermelho("\u001B[s\tCancelar operaçã\t\to?\u001B[u"));
+                opStr = sc.nextLine();
+            }
+
+            opStr = opStr.replaceAll("\\s", "");
+            
+            try {
+                opStr =sc.nextLine();
+            } catch (NoSuchElementException e) {
+                break;
+            }
+
+            if(opStr.isEmpty()) {
+                System.out.print(Saida.vermelho("\u001B[s\tCancelar operaçã\t\to?\u001B[u"));
+                opStr = sc.nextLine();
+            }
+
+            opStr = opStr.replaceAll("\\s", "");
 
             switch (op) {
                 case 1: ClinicaServico.pagamentoDireto(); break;
@@ -120,9 +209,23 @@ public class Main {
     }
 
     public static void menuRelatorios() {
+        String opStr;
+
         for(int op = -1; op != 0;) {
-            System.out.print(MENUS.get("relatorios"));
-            op = Integer.parseInt(sc.nextLine());
+            System.out.print(Saida.ciano(MENUS.get("relatorios")));
+            
+            try {
+                opStr =sc.nextLine();
+            } catch (NoSuchElementException e) {
+                break;
+            }
+
+            if(opStr.isEmpty()) {
+                System.out.print(Saida.vermelho("\u001B[s\tCancelar operaçã\t\to?\u001B[u"));
+                opStr = sc.nextLine();
+            }
+
+            opStr = opStr.replaceAll("\\s", "");
 
             switch (op) {
                 case 1:
