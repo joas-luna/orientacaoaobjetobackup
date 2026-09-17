@@ -1,5 +1,9 @@
 package br.com.example.utilitarios;
 
+import java.util.function.Function;
+
+import br.com.example.interfaces.Cor;
+
 public final class Saida {
 
     private Saida() {}
@@ -31,7 +35,7 @@ public final class Saida {
     }
 
     // CURSOR 
-    
+
     public static void subirLinha() {
         System.out.print("\u001B[A");
     }
@@ -46,6 +50,22 @@ public final class Saida {
 
     public static void descerLinha(int n) {
         System.out.print("\u001B[%dB".formatted(n));
+    }
+
+    public static void moverCursorDireita() {
+        System.out.print("\u001B[C");
+    }
+
+    public static void moverCursorDireita(int n) {
+        System.out.print("\u001B[%dC".formatted(n));
+    }
+
+    public static void moverCursorEsquerda() {
+        System.out.print("\u001B[D");
+    }
+
+    public static void moverCursorEsquerda(int n) {
+        System.out.print("\u001B[%dD".formatted(n));
     }
 
     public static void inicioLinhaSuperior() {
@@ -80,5 +100,34 @@ public final class Saida {
 
     public static void limparEsquerdaLinha() {
         System.out.print("\u001B[1K");
+    }
+
+    // OUTROS
+
+    public static void aviso(String mensagem, int n, int tabulacoes, Cor cor) {
+        if (tabulacoes < 0) {
+            throw new IllegalArgumentException("O número de tabulações não pode ser negativo.");
+        }
+
+        if (tabulacoes > 12) {
+            throw new IllegalArgumentException("O número de tabulações não pode ser maior que 12.");
+        }
+
+        if (mensagem == null || mensagem.isEmpty()) {
+            throw new IllegalArgumentException("A mensagem não pode ser nula ou vazia.");
+        }
+
+        if (n < 0) {
+            throw new IllegalArgumentException("O número de linhas não pode ser negativo.");
+        }
+
+        inicioLinhaSuperior();
+        moverCursorDireita(n);
+
+        for (int i = 0; i < tabulacoes; i++) {
+            System.out.print("\t");
+        }
+
+
     }
 }
